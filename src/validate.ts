@@ -8,12 +8,19 @@ import {getCLI} from './cli';
  */
 export const getVersion = async (): Promise<string> => {
   const versionOption: string = core.getInput('version');
+  const versionPrefixOption: string = core.getInput('version_prefix');
   if (versionOption) {
     return versionOption;
   }
 
   core.debug('Version not provided, proposing one...');
-  return getCLI().proposeVersion();
+  const version = getCLI().proposeVersion();
+
+  if (versionPrefixOption) {
+    return `${versionPrefixOption}${version}`;
+  }
+
+  return version;
 };
 
 /**

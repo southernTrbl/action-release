@@ -14,6 +14,9 @@ inputs:
   started_at:
     description: 'Unix timestamp of the release start date.'
     required: false
+  version_prefix:
+    description: 'TODO'
+    required: false
 runs:
   using: 'docker'
   image: 'docker://sentryintegrations/sentry-github-action-release:latest'
